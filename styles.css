@@ -106,10 +106,15 @@ dialog.modal form {
 }
 
 .books {
+
+    --cards-width: 300px;
+    --cards-height: 200px;
+    --gap: 30px;
+
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 250px));
-    grid-auto-flow: 200px;
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, var(--cards-width)));
+    grid-auto-rows: calc(var(--cards-height) + var(--gap)); 
+    gap: var(--gap);
     justify-items: center;
     overflow: scroll;
 }
@@ -121,7 +126,7 @@ dialog.modal form {
     align-items: center;
     background-color: white;
     border-radius: 20px;
-    width: 200px;
+    width: 300px;
     height: 200px;
     padding: 20px 5px;
 }
@@ -136,8 +141,10 @@ dialog.modal form {
     text-transform: capitalize;
 }
 
-.card :nth-child(3) {
-    margin-top: 45%;
+/* .card :nth-child(3) {
+} */
+.card > :last-child {
+    margin-top: 20%;
 }
 
 .card button {
