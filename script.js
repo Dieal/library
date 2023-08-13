@@ -17,6 +17,10 @@ Book.prototype.toString = function() {
     return `${this.title} by ${this.author}, ${this.pages} pages, ${this.getReadStatus}`;
 }
 
+Book.prototype.toggleReadStatus = function() {
+    this.read = this.read ? false : true; 
+}
+
 function addBookToLibrary() {
 
     let title = document.getElementById("title").value;
@@ -71,11 +75,21 @@ function createCard(book, arrayIndex) {
     // Card buttons
     const buttons = document.createElement("div");
     buttons.className = "buttons";
+
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "Delete";
     deleteButton.classList = "deleteButton";
     deleteButton.onclick = e => removeBookFromLibrary(arrayIndex); 
+
+    const changeReadStatus = document.createElement("button");
+    changeReadStatus.textContent = "Change Read Status";
+    changeReadStatus.onclick = e => {
+        book.toggleReadStatus();
+        displayBooks();
+    };
+
     buttons.appendChild(deleteButton);
+    buttons.appendChild(changeReadStatus);
 
     card.appendChild(bookTitle);
     card.appendChild(bookAuthor);
