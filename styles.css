@@ -15,11 +15,11 @@ button {
     border: 0;
     background-color: lightgray;
     border-radius: 5px;
+    transition: 0.15s all ease-in-out;
 }
 
 button:hover {
     background-color: cyan;
-    transition: 0.15s all ease-in-out;
 }
 
 :root {
