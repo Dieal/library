@@ -129,6 +129,7 @@ dialog.modal form {
 .card h2,
 .card h2+p {
     align-self: center;
+    text-align: center;
 }
 
 .card h2+p {
