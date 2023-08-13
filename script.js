@@ -107,5 +107,6 @@ modal.addEventListener("click", e => {
 // Creates book when submitting form's data
 form.addEventListener("submit", e => {
     e.preventDefault();
+    modal.close();
     addBookToLibrary();
 });
