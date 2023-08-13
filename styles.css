@@ -6,8 +6,13 @@ body {
     margin: 0;
 }
 
+h1, h2, h3, h4, h5, p {
+    margin: 0;
+    padding: 0;
+}
+
 :root {
-    font-family: sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 /* Page layout */
@@ -46,6 +51,48 @@ header button {
 header button:hover {
     background-color: cyan;
     transition: 0.1s all ease-in-out;
+}
+
+/* Modal Dialog */
+dialog.modal {
+    border-radius: 10px;
+    padding: 50px;
+}
+
+dialog.modal form,
+.modal-content,
+.buttons,
+.input,
+div {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-content {
+    gap: 15px;   
+    align-items: center;
+}
+
+dialog.modal form {
+    gap: 17px;
+    font-size: 1.2rem;
+}
+
+.buttons {
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+    justify-self: flex-end;
+}
+
+.input {
+    flex-direction: column;
+    gap: 3px;
+}
+
+.read-input {
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 /* Books grid */

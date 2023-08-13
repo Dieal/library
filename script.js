@@ -17,29 +17,22 @@ Book.prototype.toString = function() {
     return `${this.title} by ${this.author}, ${this.pages} pages, ${this.getReadStatus}`;
 }
 
-/* const book = new Book("1984", "George Orwell", 260, true);
-console.log(book.toString()); */
-
-/* Add book to the library */
 function addBookToLibrary() {
 
-    let title = prompt("Book Name");
-    let author = prompt("Author");
-    let pages = prompt("Pages");
-    let read = prompt("Have you read it? (y/n)");
+    let title = document.getElementById("title").value;
+    let author = document.getElementById("author").value;
+    let pages = document.getElementById("pages").value;
+    let read = document.getElementById("read-status").checked;
 
-    if (read === "y") {
-        read = true;
-    } else if (read === "n") {
-        read = false;
-    }
+    console.log(read); 
 
     let book = new Book(title, author, pages, read);
     myLibrary.push(book);
+    displayBooks();
 
 }
 
-/* Display books */
+/* Display books in a grid */
 function displayBooks() {
 
     const booksGrid = document.querySelector(".books"); 
@@ -78,3 +71,41 @@ function createCard(book) {
     return card;
 
 }
+
+/* Modal to input book's data */
+const modal = document.querySelector("dialog.modal");
+const openModalButton = document.querySelector("button.open-modal");
+const closeModalButton = document.getElementById('close-dialog');
+const form = document.querySelector(".modal form");
+
+openModalButton.onclick = () => {
+    modal.showModal();
+};
+
+closeModalButton.onclick = () => {
+    modal.close();
+};
+
+// When closed, the form has to be reset
+modal.addEventListener('close', () => {
+    form.reset();
+});
+
+// Close the modal dialog when clicking outside of it
+modal.addEventListener("click", e => {
+    const dialogDimensions = modal.getBoundingClientRect()
+    if (
+      e.clientX < dialogDimensions.left ||
+      e.clientX > dialogDimensions.right ||
+      e.clientY < dialogDimensions.top ||
+      e.clientY > dialogDimensions.bottom
+    ) {
+      modal.close();
+    }
+});
+
+// Creates book when submitting form's data
+form.addEventListener("submit", e => {
+    e.preventDefault();
+    addBookToLibrary();
+});

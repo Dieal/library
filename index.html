@@ -9,10 +9,43 @@
 </head>
 <body>
    
+    <dialog class="modal">
+        <div class="modal-content">
+            <h1>Add a book!</h1>
+            <form>
+                <div class="input">
+                    <label for="title">Title</label>
+                    <input name="title" type="text" id="title" required>
+                </div>
+
+                <div class="input">
+                    <label for="author">Author</label>
+                    <input name="author" type="text" id="author" required>
+                </div>
+
+                <div class="input">
+                    <label for="pages">Pages</label>
+                    <input name="pages" type="number" id="pages" required>
+                </div>
+
+                <div class="input read-input">
+                    <label for="read-status">Have you read it?</label>
+                    <input name="read-status" type="checkbox" id="read-status">
+                </div>
+
+                <div class="buttons">
+                    <button type="submit">Submit</button>
+                    <button type="reset">Reset</button>
+                    <button type="reset" id="close-dialog">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </dialog>
+
     <div class="wrapper">
         <header>
             <h1>DiBooks</h1>
-            <button>Add Book</button>
+            <button class="open-modal">Add Book</button>
         </header>
         <div class="books">
             <div class="card">
