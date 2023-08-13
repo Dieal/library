@@ -24,12 +24,16 @@ function addBookToLibrary() {
     let pages = document.getElementById("pages").value;
     let read = document.getElementById("read-status").checked;
 
-    console.log(read); 
-
     let book = new Book(title, author, pages, read);
     myLibrary.push(book);
     displayBooks();
 
+}
+
+function removeBookFromLibrary(index) {
+    if (index < 0 || index >= myLibrary.length) return;
+    myLibrary.splice(index, 1);
+    displayBooks();
 }
 
 /* Display books in a grid */
@@ -40,16 +44,17 @@ function displayBooks() {
 
     for (let i = 0; i < myLibrary.length; i++) {
         const book = myLibrary[i];
-        const card = createCard(book);
+        const card = createCard(book, i);
         booksGrid.appendChild(card);
     }
 
 }
 
-function createCard(book) {
+function createCard(book, arrayIndex) {
 
     const card = document.createElement("div");
     card.classList.add("card");
+    card.dataset.index = arrayIndex;
 
     const bookTitle = document.createElement("h2");
     bookTitle.textContent = book.title;
@@ -63,10 +68,20 @@ function createCard(book) {
     const bookReadStatus = document.createElement("p");
     bookReadStatus.textContent = book.getReadStatus();
 
+    // Card buttons
+    const buttons = document.createElement("div");
+    buttons.className = "buttons";
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "Delete";
+    deleteButton.classList = "deleteButton";
+    deleteButton.onclick = e => removeBookFromLibrary(arrayIndex); 
+    buttons.appendChild(deleteButton);
+
     card.appendChild(bookTitle);
     card.appendChild(bookAuthor);
     card.appendChild(bookPages);
     card.appendChild(bookReadStatus);
+    card.append(buttons);
 
     return card;
 

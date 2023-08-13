@@ -11,6 +11,17 @@ h1, h2, h3, h4, h5, p {
     padding: 0;
 }
 
+button {
+    border: 0;
+    background-color: lightgray;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: cyan;
+    transition: 0.15s all ease-in-out;
+}
+
 :root {
     font-family: 'Roboto', sans-serif;
 }
@@ -41,16 +52,8 @@ header h1 {
 }
 
 header button {
-    border: 0;
-    background-color: lightgray;
-    border-radius: 5px;
     font-size: 2rem;
     padding: 15px 25px;
-}
-
-header button:hover {
-    background-color: cyan;
-    transition: 0.1s all ease-in-out;
 }
 
 /* Modal Dialog */
@@ -123,10 +126,6 @@ dialog.modal form {
     padding: 20px 5px;
 }
 
-.card * {
-    margin: 0;
-}
-
 .card h2,
 .card h2+p {
     align-self: center;
@@ -140,10 +139,8 @@ dialog.modal form {
     margin-top: 45%;
 }
 
-.card :last-child {
-    text-transform: capitalize;
+.card button {
+    margin-top: 10px;
+    font-size: 1rem;
+    padding: 5px 10px;
 }
-
-
-
-
