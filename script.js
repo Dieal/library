@@ -1,24 +1,27 @@
 /* Books Storage */
 let myLibrary = [];
 
-/* Book Constructor */
-function Book (title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-}
+class Book {
 
-Book.prototype.getReadStatus = function() {
-    return this.read ? "Read" : "Not read yet";
-}
+    constructor (title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
 
-Book.prototype.toString = function() {
-    return `${this.title} by ${this.author}, ${this.pages} pages, ${this.getReadStatus}`;
-}
+    get readStatus() {
+        return this.read ? "Read" : "Not read yet";
+    }
 
-Book.prototype.toggleReadStatus = function() {
-    this.read = this.read ? false : true; 
+    toString() {
+        return `${this.title} by ${this.author}, ${this.pages} pages, ${this.readStatus}`;
+    }
+
+    toggleReadStatus() {
+        this.read = this.read ? false : true;
+    }
+
 }
 
 function addBookToLibrary() {
@@ -70,7 +73,7 @@ function createCard(book, arrayIndex) {
     bookPages.textContent = book.pages + " pages";
 
     const bookReadStatus = document.createElement("p");
-    bookReadStatus.textContent = book.getReadStatus();
+    bookReadStatus.textContent = book.readStatus;
 
     // Card buttons
     const buttons = document.createElement("div");
